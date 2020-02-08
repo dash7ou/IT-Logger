@@ -2,7 +2,8 @@ import {
     GET_LOGS,
     SET_LOADING,
     LOGS_ERROR,
-    ADD_LOG
+    ADD_LOG,
+    DELETE_LOG
  } from "../actions/type";
 
 const initialState ={
@@ -35,6 +36,13 @@ export default (state = initialState , action)=>{
                     }
                 ],
                 loading: false
+            }
+        case DELETE_LOG:
+            return{
+                ...state,
+                logs: {
+                    ...state.logs.filter(log=> +log.id !== +action.id)
+                }
             }
         case LOGS_ERROR:
             return{
