@@ -3,7 +3,9 @@ import {
     SET_LOADING,
     LOGS_ERROR,
     ADD_LOG,
-    DELETE_LOG
+    DELETE_LOG,
+    SET_CURRENT,
+    CLEAR_CURRENT
  } from "../actions/type";
 
 const initialState ={
@@ -50,6 +52,16 @@ export default (state = initialState , action)=>{
                 ...state,
                 error: action.error,
                 loading: false
+            }
+        case SET_CURRENT:
+            return {
+                ...state,
+                current: action.log
+            }
+        case CLEAR_CURRENT:
+            return{
+                ...state,
+                current: null
             }
         default:
             return state

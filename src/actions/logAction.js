@@ -3,7 +3,9 @@ import {
     SET_LOADING,
     LOGS_ERROR,
     ADD_LOG,
-    DELETE_LOG
+    DELETE_LOG,
+    SET_CURRENT,
+    CLEAR_CURRENT
 } from "./type";
 
 
@@ -69,6 +71,23 @@ export const deleteLogs = (id)=> async dispatch=>{
         })
     }
 }
+
+// SET Current
+export const setCurrent = log => dispatch =>{
+    dispatch({
+        type: SET_CURRENT,
+        log
+    })
+}
+
+
+// Clear current
+export const clearCurrent = _ => dispatch =>{
+    dispatch({
+        type: CLEAR_CURRENT
+    })
+}
+
 
 // set loading true
 export const setLoading =_ =>dispatch=>{
