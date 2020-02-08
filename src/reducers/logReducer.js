@@ -40,9 +40,10 @@ export default (state = initialState , action)=>{
         case DELETE_LOG:
             return{
                 ...state,
-                logs: {
+                logs: [
                     ...state.logs.filter(log=> +log.id !== +action.id)
-                }
+                ],
+                loading:false
             }
         case LOGS_ERROR:
             return{

@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import LogItem from "./LogItem";
 import Preloader from "../layout/Preloader";
-import { getLogs, setLoading } from "../../actions/logAction";
+import { getLogs, setLoading, deleteLogs } from "../../actions/logAction";
 
-const Logs = ({ log: {logs , loading}, getLogs, setLoading}) => {
+const Logs = ({ log: {logs , loading}, getLogs, setLoading, deleteLogs}) => {
     useEffect(()=>{
         setLoading();
         getLogs();
@@ -27,7 +27,7 @@ const Logs = ({ log: {logs , loading}, getLogs, setLoading}) => {
             </li>
             {logs.length === 0 && !loading ? (<p className="center">no Logs to show..</p>):(
                 logs.map(log=>(
-                    <LogItem log={log} key = {log.id} />
+                    <LogItem log={log} key = {log.id} deleteLogs={deleteLogs} />
                 ))
             )} 
         </ul>
@@ -42,4 +42,4 @@ const mapStateToProps = state =>({
     log: state.log
 })
 
-export default connect(mapStateToProps, {getLogs, setLoading})(Logs)
+export default connect(mapStateToProps, {getLogs, setLoading, deleteLogs})(Logs)
