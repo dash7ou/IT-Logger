@@ -1,10 +1,13 @@
 import React from 'react';
 import Moment from 'react-moment';
 import PropTypes from 'prop-types';
+import M from "materialize-css/dist/js/materialize.min.js";
+
 
 const LogItem = ({ log , deleteLogs}) => {
     const onDelete = ()=>{
         deleteLogs(log.id);
+        M.toast({html: 'Log Deleted'})
     }
 
     return (
