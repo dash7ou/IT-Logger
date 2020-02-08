@@ -3,7 +3,7 @@ import React from "react";
 const AddBtn = ()=>{
     return(
         <div className="fixed-action-btn">
-            <a href="#edit-log-modal" className="btn-floating btn-large blue darken-2 modal-trigger">
+            <a href="#add-log-modal" className="btn-floating btn-large blue darken-2 modal-trigger">
                 <i className="large material-icons">add</i>
             </a>
             <ul>

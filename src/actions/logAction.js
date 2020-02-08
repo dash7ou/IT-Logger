@@ -8,9 +8,7 @@ import {
 
 // get logs 
 export const getLogs = ()=> async dispatch=>{
-    try{
-        dispatch(setLoading());
-
+    try{   
         const res = await fetch("/logs");
         const data = await res.json();        
 
@@ -53,6 +51,8 @@ export const addLogs = (log)=> async dispatch=>{
 }
 
 // set loading true
-export const setLoading = ()=>({
-    type: SET_LOADING
-})
+export const setLoading =_ =>dispatch=>{
+    dispatch({
+        type: SET_LOADING
+    })
+}
