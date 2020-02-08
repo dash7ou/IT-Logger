@@ -16,7 +16,8 @@ export default (state = initialState , action)=>{
         case GET_LOGS:
             return{
                 ...state,
-                logs: action.data
+                logs: action.logs,
+                loading: false
             }
         case SET_LOADING:
             return{
@@ -26,7 +27,8 @@ export default (state = initialState , action)=>{
         case LOGS_ERROR:
             return{
                 ...state,
-                error: action.error
+                error: action.error,
+                loading: false
             }
         default:
             return state

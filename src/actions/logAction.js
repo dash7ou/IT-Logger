@@ -11,12 +11,13 @@ export const getLogs = ()=> async dispatch=>{
         dispatch(setLoading());
 
         const res = await fetch("/logs");
-        const data = await res.json();
+        const data = await res.json();        
 
         dispatch({
             type: GET_LOGS,
             logs: data
         })
+        
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
