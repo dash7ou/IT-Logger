@@ -9,7 +9,6 @@ const Logs = () => {
 
 
     useEffect(()=>{
-        console.log('in')
         getLogs();
         // eslint-disable-next-line
     }, [])
