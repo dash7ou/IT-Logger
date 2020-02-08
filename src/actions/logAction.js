@@ -2,7 +2,8 @@ import {
     GET_LOGS,
     SET_LOADING,
     LOGS_ERROR,
-    ADD_LOG
+    ADD_LOG,
+    DELETE_LOG
 } from "./type";
 
 
@@ -41,6 +42,25 @@ export const addLogs = (log)=> async dispatch=>{
         dispatch({
             type: ADD_LOG,
             data
+        })
+    }catch(err){
+        dispatch({
+            type: LOGS_ERROR,
+            error: err.response.data
+        })
+    }
+}
+
+// Delete Logs
+export const deleteLogs = (id)=> async dispatch=>{
+    try{
+        await fetch(`/logs/${id}`, {
+            method: "DELETE"
+        })
+
+        dispatch({
+            type: DELETE_LOG,
+            id
         })
     }catch(err){
         dispatch({
