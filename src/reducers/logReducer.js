@@ -5,7 +5,8 @@ import {
     ADD_LOG,
     DELETE_LOG,
     SET_CURRENT,
-    CLEAR_CURRENT
+    CLEAR_CURRENT,
+    UPDATE_LOG
  } from "../actions/type";
 
 const initialState ={
@@ -62,6 +63,12 @@ export default (state = initialState , action)=>{
             return{
                 ...state,
                 current: null
+            }
+        case UPDATE_LOG:
+            return{
+                logs: [
+                    ...state.logs.map(log => log.id === action.id ? action.newData: log)
+                ]
             }
         default:
             return state

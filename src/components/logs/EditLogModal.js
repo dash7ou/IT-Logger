@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 
-const EditLogModal = ()=>{
+const EditLogModal = ({log})=>{
     const [ message , setMessage ] = useState('');
     const [ attention , setAttention ] = useState(false);
     const [ tech, setTech ] = useState('');
 
+
+    useEffect(()=>{
+        if(log.current){
+            const {
+                current:{
+                    message,
+                    attention, 
+                    tech
+                }
+            } = log
+    
+            setMessage(message);
+            setAttention(attention);
+            setTech(tech)
+        }
+        //eslint-disable-next-line
+    }, [ log ])
 
     const onSubmit = ()=>{
         if(message === '' || tech === ''){
@@ -97,4 +115,8 @@ const modalStyle= {
     height: '75%' 
 }
 
-export { EditLogModal as default }
+const mapStateToProps = state=>({
+    log: state.log
+})
+
+export default connect(mapStateToProps)(EditLogModal);

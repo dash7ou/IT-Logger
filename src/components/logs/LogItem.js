@@ -4,16 +4,21 @@ import PropTypes from 'prop-types';
 import M from "materialize-css/dist/js/materialize.min.js";
 
 
-const LogItem = ({ log , deleteLogs}) => {
+const LogItem = ({ log , deleteLogs, setCurrent}) => {
     const onDelete = ()=>{
         deleteLogs(log.id);
         M.toast({html: 'Log Deleted'})
     }
 
+    const onUpdate = ()=>{
+        setCurrent(log)
+    }
+
     return (
         <li className="collection-item">
             <div>
-                <a href='#edit-log-modal' 
+                <a href='#edit-log-modal'
+                    onClick={onUpdate}
                     className={`modal-trigger ${log.attention ? 'red-text' : 'blue-text'}`}
                 > 
                     { log.message } 
