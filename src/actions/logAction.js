@@ -90,9 +90,10 @@ export const clearCurrent = _ => dispatch =>{
 }
 
 // update log
-export const updateLog = (newData) => async dispatch =>{
+export const updateLog = (newData) => async (dispatch, getState) =>{
     try{
-        await fetch(`/logs/${newData.id}`, {
+        const id = getState().log.current.id;
+        await fetch(`/logs/${id}`, {
             method: "PUT",
             body: JSON.stringify(newData),
             headers:{
@@ -102,7 +103,7 @@ export const updateLog = (newData) => async dispatch =>{
 
         dispatch({
             type: UPDATE_LOG,
-            id: newData.id,
+            id,
             newData
         })
     }catch(err){

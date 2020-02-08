@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
+import { updateLog, clearCurrent } from "../../actions/logAction";
 
-
-const EditLogModal = ({log})=>{
+const EditLogModal = ({log, updateLog, clearCurrent})=>{
     const [ message , setMessage ] = useState('');
     const [ attention , setAttention ] = useState(false);
     const [ tech, setTech ] = useState('');
@@ -30,6 +30,14 @@ const EditLogModal = ({log})=>{
         if(message === '' || tech === ''){
             M.toast({html: 'Please enter a message and tech!'})
         }else{
+            updateLog({
+                message,
+                attention,
+                tech
+            })
+            // clearCurrent();
+
+            M.toast({html: 'Update logs done.'})
 
         }
 
@@ -119,4 +127,7 @@ const mapStateToProps = state=>({
     log: state.log
 })
 
-export default connect(mapStateToProps)(EditLogModal);
+export default connect(mapStateToProps,{
+    updateLog,
+    clearCurrent
+})(EditLogModal);

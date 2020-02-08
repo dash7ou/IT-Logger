@@ -33,7 +33,7 @@ const Logs = ({ log: {logs , loading},setCurrent, getLogs, setLoading, deleteLog
                 logs.map(log=>(
                     <LogItem 
                         log={log} 
-                        key = {log.id} 
+                        key={log.id} 
                         deleteLogs={deleteLogs}
                         setCurrent={setCurrent}
                     />
