@@ -4,8 +4,8 @@ import {
     DELETE_TECH,
     SET_LOADING,
     TECHS_ERROR
-} from "./type";
-import { GET_LOGS } from "../actions/type";
+} from "../actions/type";
+
 
 const initialState = {
     techs: null,

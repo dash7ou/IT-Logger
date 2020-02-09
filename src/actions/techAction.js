@@ -13,7 +13,7 @@ export const getTechs = _=> async dispatch =>{
     try{
         const res = await fetch("/techs");
         const data = await res.json();
-
+        console.log(data)
         dispatch({
             type: GET_TECHS,
             techs: data
@@ -21,7 +21,7 @@ export const getTechs = _=> async dispatch =>{
     }catch(err){
         dispatch({
             type: TECHS_ERROR,
-            error: err.response.data
+            error: err.response.statusText
         })
     }
 };
