@@ -9,7 +9,7 @@ import {
 
 // Get techs from server...
 
-const getTechs = _=> async dispatch =>{
+export const getTechs = _=> async dispatch =>{
     try{
         const res = await fetch("/techs");
         const data = await res.json();
