@@ -75,7 +75,7 @@ export default (state = initialState , action)=>{
         case SEARCH_LOGS:
             return{
                 ...state,
-                logs: action.data,
+                logs: action.logs,
                 loading: false
             }
         default:

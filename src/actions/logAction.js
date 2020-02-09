@@ -127,6 +127,7 @@ export const searchLogs = (text)=> async dispatch=>{
         })
         
     }catch(err){
+        console.log(err)
         dispatch({
             type: LOGS_ERROR,
             error: err.response.data
