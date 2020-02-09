@@ -6,7 +6,8 @@ import {
     DELETE_LOG,
     SET_CURRENT,
     CLEAR_CURRENT,
-    UPDATE_LOG
+    UPDATE_LOG,
+    SEARCH_LOGS
 } from "./type";
 
 
@@ -113,6 +114,25 @@ export const updateLog = (newData) => async (dispatch, getState) =>{
         })
     }
 }
+
+// Search logs
+export const searchLogs = (text)=> async dispatch=>{
+    try{   
+        const res = await fetch(`/logs?q=${text}`);
+        const data = await res.json();        
+
+        dispatch({
+            type: SEARCH_LOGS,
+            logs: data
+        })
+        
+    }catch(err){
+        dispatch({
+            type: LOGS_ERROR,
+            error: err.response.data
+        })
+    }
+} 
 
 
 // set loading true

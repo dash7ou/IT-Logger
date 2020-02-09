@@ -33,7 +33,8 @@ const EditLogModal = ({log, updateLog, clearCurrent})=>{
             updateLog({
                 message,
                 attention,
-                tech
+                tech,
+                date: new Date()
             })
             // clearCurrent();
 

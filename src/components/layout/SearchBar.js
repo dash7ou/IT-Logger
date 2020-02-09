@@ -1,6 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+import { searchLogs , setLoading } from "../../actions/logAction";
 
-const SearchBar = ()=>{
+
+const SearchBar = ({ log, searchLogs, setLoading })=>{
     return(
         <nav style={{ marginBottom : '30px'}} className="blue">
         <div className="nav-wrapper">
@@ -16,4 +19,11 @@ const SearchBar = ()=>{
     );
 };
 
-export { SearchBar as default }
+const mapStateToProps = state => ({
+  log: state.log
+})
+
+export default connect(mapStateToProps, {
+  setLoading,
+  searchLogs
+})(SearchBar)
