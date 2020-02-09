@@ -27,7 +27,7 @@ export const getTechs = _=> async dispatch =>{
 };
 
 // Add techs from 
-export const addTechs = tech => async dispatch=>{
+export const addTech = tech => async dispatch=>{
     try{
         const res = await fetch("/techs", {
             method: "POST",
