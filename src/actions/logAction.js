@@ -25,7 +25,7 @@ export const getLogs = ()=> async dispatch=>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            error: err.response.data
+            error: err.response.statusText
         })
     }
 } 
@@ -50,7 +50,7 @@ export const addLogs = (log)=> async dispatch=>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            error: err.response.data
+            error: err.response.statusText
         })
     }
 }
@@ -69,7 +69,7 @@ export const deleteLogs = (id)=> async dispatch=>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            error: err.response.data
+            error: err.response.statusText
         })
     }
 }
@@ -110,7 +110,7 @@ export const updateLog = (newData) => async (dispatch, getState) =>{
     }catch(err){
         dispatch({
             type: LOGS_ERROR,
-            error: err.response.data
+            error: err.response.statusText
         })
     }
 }
@@ -130,7 +130,7 @@ export const searchLogs = (text)=> async dispatch=>{
         console.log(err)
         dispatch({
             type: LOGS_ERROR,
-            error: err.response.data
+            error: err.response.statusText
         })
     }
 } 
