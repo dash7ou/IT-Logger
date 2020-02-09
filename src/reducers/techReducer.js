@@ -36,6 +36,13 @@ export default (state = initialState , action)=>{
                     }
                 ]
             }
+        case DELETE_TECH:
+            return {
+                ...state, 
+                techs:[
+                    ...state.techs.filter(tech => tech.id !== action.id)
+                ]
+            }
         case TECHS_ERROR:
             return {
                 ...state,
