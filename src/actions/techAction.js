@@ -7,7 +7,7 @@ import {
 } from "./type";
 
 
-// Get techs from server...
+// Get techs...
 
 export const getTechs = _=> async dispatch =>{
     try{
@@ -26,6 +26,29 @@ export const getTechs = _=> async dispatch =>{
     }
 };
 
+// Add techs from 
+export const addTechs = tech => async dispatch=>{
+    try{
+        const res = await fetch("/techs", {
+            method: "POST",
+            body: JSON.stringify(tech),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+
+        const data = await res.json();
+        dispatch({
+            type: ADD_TECH,
+            data
+        })
+    }catch(err){
+        dispatch({
+            type: TECHS_ERROR,
+            error: err.response.statusText
+        })
+    }
+}
 
 export const setLoading = _ => async dispatch =>{
     dispatch({
