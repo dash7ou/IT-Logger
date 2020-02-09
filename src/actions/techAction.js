@@ -11,9 +11,18 @@ import {
 
 const getTechs = _=> async dispatch =>{
     try{
+        const res = await fetch("/techs");
+        const data = await res.json();
 
-    }catch{
-
+        dispatch({
+            type: GET_TECHS,
+            techs: data
+        })
+    }catch(err){
+        dispatch({
+            type: TECHS_ERROR,
+            error: err.response.data
+        })
     }
 };
 
