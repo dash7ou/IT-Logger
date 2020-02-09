@@ -50,6 +50,24 @@ export const addTech = tech => async dispatch=>{
     }
 }
 
+export const deleteTech = id => async dispatch =>{
+    try{
+        await fetch(`/techs/${id}`, {
+            method: "DELETE"
+        })
+
+        dispatch({
+            type: DELETE_TECH,
+            id
+        })
+    }catch(err){
+        dispatch({
+            type: TECHS_ERROR,
+            error: err.response.statusText
+        })
+    }
+}
+
 export const setLoading = _ => async dispatch =>{
     dispatch({
         type: SET_LOADING
