@@ -26,6 +26,21 @@ export default (state = initialState , action)=>{
                 ...state,
                 loading: true
             }
+        case ADD_TECH:
+            return {
+                ...state,
+                techs:[
+                    ...state.techs,
+                    {
+                        ...action.data
+                    }
+                ]
+            }
+        case TECHS_ERROR:
+            return {
+                ...state,
+                error: action.error
+            }
         default:
             return state
     }
